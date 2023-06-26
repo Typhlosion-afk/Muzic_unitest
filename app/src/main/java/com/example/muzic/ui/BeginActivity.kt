@@ -29,10 +29,10 @@ class BeginActivity : AppCompatActivity() {
             Manifest.permission.READ_MEDIA_IMAGES
         )
         if (ContextCompat.checkSelfPermission(this, listPms[0]) == PackageManager.PERMISSION_GRANTED
-            && ContextCompat.checkSelfPermission(
-                this,
-                listPms[1]
-            ) == PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(this, listPms[1]) == PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(this, listPms[2]) == PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(this, listPms[3]) == PackageManager.PERMISSION_GRANTED
+
         ) {
             nextActivity()
         } else {
