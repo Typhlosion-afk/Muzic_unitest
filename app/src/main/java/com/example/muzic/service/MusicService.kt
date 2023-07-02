@@ -30,7 +30,7 @@ import com.example.muzic.utils.Constants.NOTIFICATION_DATA_ACTION
 import com.example.muzic.utils.Constants.ONGOING_NOTIFICATION_ID
 import com.example.muzic.utils.Constants.WIDGET_DATA_ACTION
 
-class MusicService() : Service(), OnPreparedListener,
+open class MusicService() : Service(), OnPreparedListener,
     OnCompletionListener, MediaPlayer.OnErrorListener, OnAudioFocusChangeListener {
     private val binder: IBinder = MusicBinder()
     private var mMusicNotiManager: MusicNotificationManager? = null
@@ -83,12 +83,8 @@ class MusicService() : Service(), OnPreparedListener,
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val notificationAction = intent.getIntExtra(NOTIFICATION_DATA_ACTION, -1)
-        val widgetAction = intent.getIntExtra(WIDGET_DATA_ACTION, -1)
         if (notificationAction != -1) {
             handleAction(notificationAction)
-        }
-        if (widgetAction != -1) {
-            handleAction(widgetAction)
         }
         if (intent.getIntExtra(KEY_SONG_POSITION, -1) != -1) {
             mListSong =
@@ -316,11 +312,6 @@ class MusicService() : Service(), OnPreparedListener,
     override fun onBind(intent: Intent): IBinder? {
         isBinding = true
         return binder
-    }
-
-    override fun onRebind(intent: Intent) {
-        Log.d("TAG", "reBind: ")
-        super.onRebind(intent)
     }
 
     override fun onUnbind(intent: Intent): Boolean {
