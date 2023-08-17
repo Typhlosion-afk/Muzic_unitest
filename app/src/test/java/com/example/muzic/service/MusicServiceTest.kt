@@ -104,7 +104,7 @@ class MusicServiceTest {
         intent.putExtra(KEY_SONG_POSITION, 0)
         intent.putExtra(KEY_SONG_LIST, listSong as Serializable)
 
-        //set value mSong and ListSong
+        //call onStartCommand to set value mSong and ListSong
         mMusicService.onStartCommand(intent, 1, 1)
 
         mMusicService.nextSong()
@@ -121,7 +121,7 @@ class MusicServiceTest {
         intent.putExtra(KEY_SONG_POSITION, 1)
         intent.putExtra(KEY_SONG_LIST, listSong as Serializable)
 
-        //set value mSong and ListSong
+        //call onStartCommand to set value mSong and ListSong
         mMusicService.onStartCommand(intent, 1, 1)
 
         mMusicService.prevSong()
