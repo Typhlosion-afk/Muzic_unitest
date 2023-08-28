@@ -183,7 +183,6 @@ class BasicTest {
         verify(mockGasController, times(1)).burn()
         verify(mockElectricController, times(1)).shock(anyInt())
 
-
     }
 
     /**
